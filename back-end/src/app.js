@@ -7,11 +7,13 @@ const app = express();
 app.set("port", process.env.PORT || 4000);
 
 app.use(morgan("dev"));
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 
-app.get('/', (req, res) => {
-    res.json({message: 'Welcome to my app'})
-})
+app.get("/", (req, res) => {
+  res.json({ message: "Welcome to my app" });
+});
 
-app.use("/api/employees", Router)
+app.use("/api/employees", Router);
 
 export { app };

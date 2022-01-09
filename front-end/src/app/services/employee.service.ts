@@ -13,6 +13,7 @@ export class EmployeeService {
     position: '',
     office: '',
     salary: 0,
+    _id: '',
   };
 
   employees: Employee[] = [];
@@ -24,6 +25,14 @@ export class EmployeeService {
   }
 
   createEmployee(employee: Employee) {
-    return this.http.post(this.URL_API, employee)
+    return this.http.post(this.URL_API, employee);
+  }
+
+  deleteEmployee(_id: string) {
+    return this.http.delete(`${this.URL_API}/${_id}`);
+  }
+
+  updateEmployee(employee: Employee) {
+    return this.http.put(`${this.URL_API}/${employee._id}`, employee);
   }
 }
